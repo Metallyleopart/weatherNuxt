@@ -1,7 +1,7 @@
 <template class="bg-[#f0f0f0]">
   <Head>
     <Title>{{ title }}</Title>
-    <Meta name="description" :content="title" />
+    <Meta name="description" :content="title" lang="en" />
   </Head>
   <div class="px-3 pt-6 pb-10">
     <!-- <h1 class="my-3 text-xl text-center font-semibold md:text-2xl">Weather</h1> -->
