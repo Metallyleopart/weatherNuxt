@@ -7,7 +7,7 @@
   <div class="px-3 pt-6 pb-10">
     <!-- <h1 class="my-3 text-xl text-center font-semibold md:text-2xl">Weather</h1> -->
     <form class="flex mx-auto max-w-md">
-      <input class="flex-1 bg-gray-300 rounded-l-xl border-0 outline-0 px-4 py-2.5 md:px-6" v-model="input" placeholder="Search with city name" type="text" />
+      <input class="flex-1 bg-gray-300 rounded-l-xl border-0 outline-0 px-4 py-2.5 md:px-6" v-model="input" placeholder="Search by city name" type="text" />
       <button class="block px-3 py-1.5 rounded-r-xl text-white bg-cyan-500 md:px-6" type="button">Search</button>
     </form>
     <div v-if="weatherDatas" class="mt-5 md:mt-5 md:flex md:flex-col md:justify-center md:gap-x-24 md:w-full">
