@@ -4,11 +4,16 @@
     <Title>{{ title }}</Title>
     <Meta name="description" :content="title" />
   </Head>
-  <div class="px-3 pt-6 pb-10">
-    <!-- <h1 class="my-3 text-xl text-center font-semibold md:text-2xl">Weather</h1> -->
+  <div class="p-5">
+    <h1 class="mb-3 text-center text-sky-400 text-2xl md:text-3xl font-bold">Weather App</h1>
     <form class="flex mx-auto max-w-md">
-      <input class="flex-1 bg-[#9ca3af] placeholder:text-slate-100 text-white rounded-l-xl border-0 outline-0 px-4 py-2.5 md:px-6" v-model="input" placeholder="Search by city name" type="text" />
-      <button class="block px-3 py-1.5 rounded-r-xl text-white bg-sky-400 md:px-6" type="button">Search</button>
+      <input type="search" class="block p-2.5 ps-4 w-full z-20 text-sm text-gray-800 bg-gray-200 rounded-s-md outline-none border-0" placeholder="Search by city name" required autocomplete="off" v-model="input" />
+      <button type="submit" class="flex items-center bg-sky-400 p-2.5 h-full text-sm font-medium text-white bg-blue-dark rounded-e-md outline-none">
+        <svg class="mr-2 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+        search
+      </button>
     </form>
     <div v-if="weatherDatas" class="mt-5 md:mt-5">
       <div>
@@ -51,8 +56,12 @@
         </div>
       </div>
     </div>
-    <div v-else-if="pending" class="max-w-md mx-auto -mt-2 px-4 py-2.5 text-center text-white bg-cyan-400">loading bang</div>
-    <div v-else-if="error && input.length !== 0" class="max-w-md mx-auto -mt-2 px-4 py-2.5 text-center text-white bg-red-400">nggak ketemu</div>
+    <div v-else-if="pending">
+      <loading />
+    </div>
+    <div v-else-if="error && input.length !== 0">
+      <Error />
+    </div>
   </div>
 </template>
 <script setup>
