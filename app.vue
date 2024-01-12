@@ -4,9 +4,9 @@
     <Title>{{ title }}</Title>
     <Meta name="description" :content="title" />
   </Head>
-  <div class="p-5">
+  <div class="p-5 text-gray-900 md:h-[100dvh]">
     <h1 class="mb-3 text-center text-sky-400 text-2xl md:text-3xl font-bold">Weather App</h1>
-    <form class="flex mx-auto max-w-md">
+    <form class="flex mx-auto max-w-md" @submit.prevent="fetchData(input)">
       <input type="search" class="block p-2.5 ps-4 w-full z-20 text-sm text-gray-800 bg-gray-200 rounded-s-md outline-none border-0" placeholder="Search by city name" required autocomplete="off" v-model="input" />
       <button type="submit" class="flex items-center bg-sky-400 p-2.5 h-full text-sm font-medium text-white bg-blue-dark rounded-e-md outline-none">
         <svg class="mr-2 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -68,6 +68,14 @@
   const id = useRuntimeConfig().public.apiKey;
   const title = 'Nuxt Weather';
   const input = ref('');
+  // const { data: weatherDatas, pending, error, execute } = await useLazyFetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric&appid=${id}`);
+
+  // function fetchData() {
+  //   execute();
+  //   console.log(input);
+  //   console.log(input.value);
+  // }
+
   const {
     data: weatherDatas,
     pending,
@@ -75,7 +83,6 @@
   } = await useLazyFetch(() => {
     return `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric&appid=${id}`;
   });
-  // console.log(weatherDatas);
 </script>
 
 <style scoped>
